@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   isLoggedIn(){
-    return !!(localStorage.getItem('loggedIn') && sessionStorage.getItem('username'));
+    return !!(localStorage.getItem('loggedIn') && sessionStorage.getItem('token'));
   }
 
   logout(){
