@@ -15,8 +15,8 @@ export class CreateComponent implements OnInit {
 
   public eventForm: FormGroup;
 
-  private gcode:String;
-  private address:String;
+  public gcode:String;
+  public address:String;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
   }
 
   private _date: string;
-  private decodedaid:String;
+  public decodedaid:String;
 
   ngOnInit() {
     this.decodedaid = atob(sessionStorage.getItem('token'));
