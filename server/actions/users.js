@@ -72,10 +72,7 @@ lookupUsername = (req,res)=>{
                 response:err
             }).status(500)
         }else{
-            res.json({
-                success:true,
-                response:docs
-            })
+            res.send(docs.username);
         }
 
     })

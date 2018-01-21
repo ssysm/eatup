@@ -23,7 +23,7 @@ export class DetailComponent implements OnInit {
 
   public eid:String;
   public eventData:any;
-  public author:void;
+  public author:any;
   public placeId:string;
   public latitude:String;
   public longitude:String;
@@ -39,7 +39,7 @@ export class DetailComponent implements OnInit {
           this.placeId = data.json().response.location;
           this.authService.getUsername(data.json().response.authorId)
             .subscribe(author => {
-              this.author = author.json().response.username
+              this.author = author.text();
             });
           let data2 = this.eventData.members.find( ( ele ) =>{
             return ele.uid === atob(sessionStorage.getItem('token'));

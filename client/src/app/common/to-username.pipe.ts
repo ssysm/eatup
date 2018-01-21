@@ -5,16 +5,21 @@ import {AuthService} from "../auth/auth.service";
 })
 export class ToUsernamePipe implements PipeTransform {
 
+  public result: string = 'placeholder';
+
   constructor(
     private authService:AuthService
   ){
 
   }
 
+
   transform(value: string): any {
+    var self = this;
     this.authService.getUsername(value)
-      .subscribe(data=>{
-        return data.json().response.username;
+      .subscribe(function(data){
+       self.result = data.text();
+        return self.result;
       });
   }
 
