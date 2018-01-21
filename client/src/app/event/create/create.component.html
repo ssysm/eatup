@@ -1,0 +1,45 @@
+<div class="container" style="margin-top: 24px;">
+  <div class="row">
+    <form class="col s12" [formGroup]="eventForm" (ngSubmit)="createEvent(f.value)" #f="ngForm">
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="搓饭主题" id="name" type="text" class="validate" formControlName="name">
+          <label for="name">主题</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="location" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search >
+          <label for="location">地点</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input disabled [value]="gcode" [(ngModel)]="gcode" formControlName="gcode" name="gcode" id="gcode" type="text" class="validate">
+          <label for="gcode">逆向追溯码</label>
+        </div>
+        <div class="input-field col s6">
+          <input disabled [value]="address" [(ngModel)]="address" formControlName="address" id="address" type="text" class="validate">
+          <label for="address">地址</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <span>开始时间</span>
+          <input id="startTime" type="datetime-local" formControlName="startTime" />
+        </div>
+        <div class="input-field col s6">
+          <span>结束时间</span>
+          <input id="endTime" name="endTime" type="datetime-local" formControlName="endTime">
+        </div>
+      </div>
+      <input type="hidden" formControlName="authorId" name="authorId" [(ngModel)]="decodedaid">
+      <button *ngIf="eventForm.valid" class="btn waves-effect waves-light" type="submit" name="action">提交
+        <i class="material-icons right">send</i>
+      </button>
+      <button *ngIf="!eventForm.valid" class="btn waves-effect waves-light" type="button" disabled name="action">提交
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+  </div>
+</div>

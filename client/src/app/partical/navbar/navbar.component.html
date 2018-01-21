@@ -1,0 +1,22 @@
+<nav>
+  <div class="nav-wrapper">
+    <a routerLink="/" class="brand-logo">Eatup</a>
+    <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down" *ngIf="!authService.isLoggedIn()">
+      <li><a routerLink="/auth/login">登陆/注册</a></li>
+
+    </ul>
+    <ul class="right hide-on-med-and-down" *ngIf="authService.isLoggedIn()">
+      <li><a routerLink="/event/create" >创建约饭</a></li>
+      <li><a routerLink="/event/me" >我的约饭</a></li>
+      <li><a (click)="authService.logout()" >退出登陆</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo" >
+      <li><a routerLink="/auth/login" *ngIf="!authService.isLoggedIn()">登陆/注册</a></li>
+      <li><a routerLink="/event/create" *ngIf="authService.isLoggedIn()">创建约饭</a></li>
+      <li><a routerLink="/event/me" *ngIf="authService.isLoggedIn()">我的约饭</a></li>
+      <li><a (click)="authService.logout()" *ngIf="authService.isLoggedIn()">退出登陆</a></li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>

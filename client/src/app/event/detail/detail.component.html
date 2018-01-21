@@ -1,0 +1,39 @@
+<div class="container" *ngIf="eventData">
+  <div class="row">
+    <div class="col s12">
+      <h3>{{eventData.eventName}}</h3>
+      <h5>由 <b>{{author}}</b> 发起</h5>
+      <hr>
+      <div class="mapData" *ngIf="mapData">
+        <h4>在 {{mapData.formatted_address}} <a href="{{mapData.url}}">查看</a></h4>
+        <div class="card">
+          <div class="card-content">
+            <p>
+              名称: <b>{{mapData.name}}</b><br>
+              电话: <b>{{mapData.international_phone_number}}</b><br>
+              营业时间:{{mapData.opening_hours.weekday_text}}
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <p>已有 <b>{{eventData.members.length}}</b>名同学选择去</p>
+            <span *ngFor="let uid of eventData.members">{{uid.uid}} &nbsp;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="authService.isLoggedIn()&&!reported">
+    <div class="col s6">
+      <a class="waves-effect waves-light btn center" style="width: 70vw;" (click)="joinEvent()">去</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="13" (mapReady)="mapReady($event)">
+        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>

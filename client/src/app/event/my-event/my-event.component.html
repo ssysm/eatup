@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="col s12 m7" *ngFor="let event of eventData">
+    <h2 class="header"></h2>
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>{{event.eventName}}</p>
+        </div>
+        <div class="card-action">
+          <a  routerLink="/event/id/{{event._id}}">进入</a>
+          <a (click)="deleteEvent(event._id)" >删除</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

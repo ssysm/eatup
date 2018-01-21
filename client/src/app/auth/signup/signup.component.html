@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <form class="col s12" [formGroup]="signupForm" (ngSubmit)="signup(f.value)" #f="ngForm">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="username" type="text" class="validate" formControlName="username">
+          <label for="username">用户名</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate" formControlName="email">
+          <label for="email">邮箱</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate" formControlName="password">
+          <label for="password">密码</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action" *ngIf="signupForm.valid">提交
+        <i class="material-icons right">send</i>
+      </button>
+      <button class="btn waves-effect waves-light" type="button" disabled name="action" *ngIf="!signupForm.valid">提交
+        <i class="material-icons right">send</i>
+      </button>
+      <a class="waves-effect waves-light btn" routerLink="/auth/login">登陆</a>
+    </form>
+  </div>
+</div>
+<router-outlet></router-outlet>

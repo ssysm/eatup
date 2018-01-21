@@ -14,6 +14,10 @@ var schema = mongoose.Schema({
         required:true
     },
     time:{
+        created:{
+            type:String,
+            default:Date.now()
+        },
         startTime:{
             type:String
         },
@@ -23,13 +27,13 @@ var schema = mongoose.Schema({
     },
     location:{
         type:String,
-        required:true,
+        required:true
     },
-    members:{
-        type:Array
-    }
+    members:[{
+        uid:{
+            type:String
+        }
+    }]
 });
 
-var Event = db.model('event', schema);
-
-module.exports = Event;
+module.exports = mongoose.model('event', schema);

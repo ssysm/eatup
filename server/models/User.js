@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose').set('debug', true);
 const db = mongoose.connect(require('../config').database);
 
 var schema = mongoose.Schema({
@@ -22,4 +22,4 @@ var schema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('User', schema);
+module.exports = mongoose.model('users', schema);
