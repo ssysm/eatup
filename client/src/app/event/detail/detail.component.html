@@ -2,10 +2,12 @@
   <div class="row">
     <div class="col s12">
       <h3>{{eventData.eventName}}</h3>
-      <h5>由 <b>{{author}}</b> 发起</h5>
+      <h5>由 <b>{{author}}</b> 在 {{eventData.time.created |date:'yyyy-MM-dd HH:mm'}}发起</h5>
       <hr>
       <div class="mapData" *ngIf="mapData">
         <h4>在 {{mapData.formatted_address}} <a href="{{mapData.url}}">查看</a></h4>
+        <h5>开始时间: <b>{{eventData.time.startTime | date:'yyyy-MM-dd HH:mm'}}</b></h5>
+        <h5>预计结束时间: <b>{{eventData.time.endTime|date:'yyyy-MM-dd HH:mm'}}</b></h5>
         <div class="card">
           <div class="card-content">
             <p>
