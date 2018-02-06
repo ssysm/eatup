@@ -1,11 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {AuthService} from "../auth/auth.service";
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/finally';
 @Pipe({
   name: 'toUsername'
 })
 export class ToUsernamePipe implements PipeTransform {
 
-  public result: string = 'placeholder';
+  result = '';
 
   constructor(
     private authService:AuthService
@@ -13,15 +15,7 @@ export class ToUsernamePipe implements PipeTransform {
 
   }
 
-
-  transform(value: string): any {
-    var self = this;
-    this.authService.getUsername(value)
-      .subscribe(function(data){
-       self.result = data.text();
-        return self.result;
-      });
+ async transform(value: string){
+    return await this.authService.getUsername(value)
   }
-
-
 }

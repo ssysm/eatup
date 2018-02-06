@@ -38,8 +38,8 @@ export class DetailComponent implements OnInit {
           this.eventData = data.json().response;
           this.placeId = data.json().response.location;
           this.authService.getUsername(data.json().response.authorId)
-            .subscribe(author => {
-              this.author = author.text();
+            .then(author => {
+              this.author = author
             });
           let data2 = this.eventData.members.find( ( ele ) =>{
             return ele.uid === atob(sessionStorage.getItem('token'));
@@ -47,7 +47,6 @@ export class DetailComponent implements OnInit {
           if (data2) {
             this.reported = true;
           }
-
         } else {
           alert('未查询到，请查证');
           this.router.navigate(['/'])

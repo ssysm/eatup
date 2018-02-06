@@ -20,7 +20,7 @@
         <div class="card">
           <div class="card-content">
             <p>已有 <b>{{eventData.members.length}}</b>名同学选择去</p>
-            <span *ngFor="let uid of eventData.members">{{uid.uid | toUsername |async}} &nbsp;</span>
+            <span class="username_span" *ngFor="let uid of (eventData.members)">{{uid.uid | toUsername |async}} &nbsp;</span>
           </div>
         </div>
       </div>

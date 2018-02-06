@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 import {environment} from "../../environments/environment";
+import 'rxjs/Rx';
 import 'rxjs/operator/map';
 @Injectable()
 export class AuthService {
@@ -19,9 +20,10 @@ export class AuthService {
       .post(environment.apiBase+'/users/',cred)
   }
 
-  getUsername(ObjId){
-    return this.http
-      .get(environment.apiBase+'/users/id/'+ObjId)
+ async getUsername(ObjId){
+    const res = await this.http
+      .get(environment.apiBase + '/users/id/' + ObjId).toPromise();
+    return res.text();
   }
 
   isLoggedIn(){
