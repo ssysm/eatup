@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBase:'https://api-project-eatup.theeditorstudio.com'
+  apiBase:'https://api-eatup.tes-project.xyz'
 };
