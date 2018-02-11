@@ -1,4 +1,4 @@
-const mongoose = require('mongoose').set('debug', true);
+const mongoose = require('mongoose');
 const db = mongoose.connect(require('../config').database);
 
 var schema = mongoose.Schema({
